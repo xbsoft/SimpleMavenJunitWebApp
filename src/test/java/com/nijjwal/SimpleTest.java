@@ -32,6 +32,6 @@ public class SimpleTest{
   @Test
   public void displayHiddenNumber(){
     int x = simple.printNumber();
-    assertEquals(8, x);
+    assertEquals(10, x);
   }
 }
