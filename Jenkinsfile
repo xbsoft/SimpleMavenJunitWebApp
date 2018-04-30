@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Check') {
       steps {
-        bat 'sonar-runner'
+        bat 'sonar-scanner'
       }
     }
   }
