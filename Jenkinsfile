@@ -13,7 +13,7 @@ pipeline {
             readFile 'POM.xml'
           }
         }
-        stage('Package') {
+        stage('Package & Test') {
           steps {
             bat 'mvn package'
           }
