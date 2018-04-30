@@ -13,11 +13,16 @@ pipeline {
             readFile 'POM.xml'
           }
         }
-        stage('') {
+        stage('Package') {
           steps {
             bat 'mvn package'
           }
         }
+      }
+    }
+    stage('Check') {
+      steps {
+        bat 'sonar-runner'
       }
     }
   }
