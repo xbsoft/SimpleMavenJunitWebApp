@@ -7,8 +7,17 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        readFile 'POM.xml'
+      parallel {
+        stage('Build') {
+          steps {
+            readFile 'POM.xml'
+          }
+        }
+        stage('') {
+          steps {
+            bat 'mvn package'
+          }
+        }
       }
     }
   }
