@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Check') {
       steps {
-        bat 'sonar-scanner'
+        bat 'mvn -f pom.xml -e -B sonar:sonar -Dsonar.host.url=http://localhost:9000 && exit %%ERRORLEVEL%%'
       }
     }
   }
