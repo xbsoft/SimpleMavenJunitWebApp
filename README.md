@@ -1,1 +1,2 @@
 # SimpleMavenJunitWebApp
+# Recommended
