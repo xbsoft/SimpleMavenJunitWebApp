@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Upload') {
       steps {
-        sh 'echo "TBD"'
+        sleep 10
       }
     }
     stage('Selenium') {
