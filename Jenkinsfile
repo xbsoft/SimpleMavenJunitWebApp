@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Upload') {
       steps {
-        build 'NexusUpload'
+        sh 'echo "TBD"'
       }
     }
     stage('Selenium') {
