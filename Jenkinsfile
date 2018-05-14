@@ -25,9 +25,10 @@ pipeline {
         bat 'mvn -f pom.xml -e -B sonar:sonar -Dsonar.host.url=http://106.14.68.164:9000 && exit %%ERRORLEVEL%%'
       }
     }
-    stage('Upload') {
+    stage('NexusUpload') {
       steps {
         sleep 10
+        build 'NexusUpload'
       }
     }
     stage('Selenium') {
