@@ -6,12 +6,12 @@ pipeline {
         git 'https://github.com/xbsoft/SimpleMavenJunitWebApp'
       }
     }
-    stage('Build') {
+    stage('Build and Test') {
       parallel {
         stage('Build') {
           steps {
             readFile 'POM.xml'
-            bat 'mvn clean install -DskipTests'
+            bat 'mvn install -DskipTests'
           }
         }
         stage('UnitTest') {
