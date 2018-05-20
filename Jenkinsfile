@@ -11,11 +11,12 @@ pipeline {
         stage('Build') {
           steps {
             readFile 'POM.xml'
+            bat 'mvn clean install -DskipTests'
           }
         }
-        stage('Package & Test') {
+        stage('UnitTest') {
           steps {
-            bat 'mvn package'
+            bat 'mvn test'
           }
         }
       }
