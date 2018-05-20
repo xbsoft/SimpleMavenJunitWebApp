@@ -16,7 +16,7 @@ pipeline {
         }
         stage('UnitTest') {
           steps {
-            bat 'mvn test'
+            bat 'mvn package'
           }
         }
       }
