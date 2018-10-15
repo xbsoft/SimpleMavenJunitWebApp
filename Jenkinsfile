@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Code') {
       steps {
-        git 'https://github.com/xbsoft/SimpleMavenJunitWebApp'
+        git(url: 'https://github.com/xbsoft/SimpleMavenJunitWebApp', branch: 'dev')
       }
     }
     stage('Build and Test') {
