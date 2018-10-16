@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Code') {
       steps {
-        git(url: 'https://github.com/xbsoft/SimpleMavenJunitWebApp', branch: 'dev')
+        git 'https://github.com/xbsoft/SimpleMavenJunitWebApp'
       }
     }
     stage('Build and Test') {
@@ -42,12 +42,12 @@ pipeline {
         build 'JMeterDemo'
       }
     }
-    
   }
-  
   post {
     always {
       junit '**/reports/junit/*.xml'
+
     }
-  }  
+
+  }
 }
