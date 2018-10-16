@@ -42,5 +42,12 @@ pipeline {
         build 'JMeterDemo'
       }
     }
+    
   }
+  
+  post {
+    always {
+      junit '**/reports/junit/*.xml'
+    }
+  }  
 }
