@@ -1,5 +1,5 @@
 ﻿# SimpleMavenJunitWebApp
-# demo 9.1
+# demo 9.2
 
 演示目标
 课程学员：初级、中级、高级
