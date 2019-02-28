@@ -22,8 +22,17 @@ pipeline {
       }
     }
     stage('Check') {
-      steps {
-        bat 'mvn -e -B sonar:sonar -Dsonar.host.url=http://106.14.68.164:9000 -Dsonar.sources=src\\main -Dsonar.scm.provider=git -Dsonar.java.binaries=target && exit %%ERRORLEVEL%%'
+      parallel {
+        stage('Check') {
+          steps {
+            bat 'mvn -e -B sonar:sonar -Dsonar.host.url=http://106.14.68.164:9000 -Dsonar.sources=src\\main -Dsonar.scm.provider=git -Dsonar.java.binaries=target && exit %%ERRORLEVEL%%'
+          }
+        }
+        stage('checkx') {
+          steps {
+            sh 'ls -l'
+          }
+        }
       }
     }
     stage('NexusUpload') {
