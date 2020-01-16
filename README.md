@@ -38,11 +38,10 @@ MavenGitDemo
 工具链
 code, GitHub
 IDE
-Redmine、Jira、Confluence
+Jira/Confluence
 Maven
 Jenkins
 SonarQube
-testlink
 Zephyr
 Selenium
 Jmeter
