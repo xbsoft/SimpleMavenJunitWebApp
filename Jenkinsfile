@@ -11,12 +11,24 @@ pipeline {
         stage('Build') {
           steps {
             readFile 'pom.xml'
+            script {
+					if(isUnix() == true) {
+            sh 'mvn install -DskipTests'
+					}else {
             bat 'mvn install -DskipTests'
+					}
+				}
           }
         }
         stage('UnitTest') {
           steps {
+            script {
+					if(isUnix() == true) {
+            sh 'mvn package'
+					}else {
             bat 'mvn package'
+					}
+				}
           }
         }
       }
@@ -25,12 +37,24 @@ pipeline {
       parallel {
         stage('Check') {
           steps {
+            script {
+					if(isUnix() == true) {
+            sh 'mvn -e -B sonar:sonar -Dsonar.host.url=http://106.14.68.164:9000 -Dsonar.sources=src\\main -Dsonar.scm.provider=git -Dsonar.java.binaries=target && exit %%ERRORLEVEL%%'
+					}else {
             bat 'mvn -e -B sonar:sonar -Dsonar.host.url=http://106.14.68.164:9000 -Dsonar.sources=src\\main -Dsonar.scm.provider=git -Dsonar.java.binaries=target && exit %%ERRORLEVEL%%'
+					}
+				}
           }
         }
         stage('checkx') {
           steps {
-            sh 'ls -l'
+            script {
+					if(isUnix() == true) {
+                     sh 'ls -l'
+         	}else {
+                     bat 'ls -l'
+         }
+				}
           }
         }
       }
