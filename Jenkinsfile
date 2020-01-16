@@ -10,7 +10,7 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            readFile 'POM.xml'
+            readFile 'pom.xml'
             bat 'mvn install -DskipTests'
           }
         }
