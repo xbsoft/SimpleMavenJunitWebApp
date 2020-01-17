@@ -1,8 +1,5 @@
 pipeline {
   agent any
-	  //定义mvn环境
-    def mvnHome = tool 'maven3'
-    env.PATH = "${mvnHome}/bin:${env.PATH}"
   stages {
     stage('Code') {
       steps {
@@ -10,38 +7,6 @@ pipeline {
       }
     }
 
-    stage('mvn test'){
-        //mvn 测试
-    	script {
-		if(isUnix() == true) {
-        		sh "mvn test"
-		}else {
-			bat "mvn test"
-			}
-		}
-    }
-
-    stage('mvn build'){
-        //mvn构建
-	script {
-		if(isUnix() == true) {
-        sh "mvn clean install -Dmaven.test.skip=true"
-		}else {
-        bat "mvn clean install -Dmaven.test.skip=true"
-			}
-		}
-    }
-
-    stage('deploy'){
-        //执行部署脚本
-		script {
-		if(isUnix() == true) {
-        echo "deploy ......" 
-		}else {
-        echo "deploy ......" 
-			}
-		}
-    }
 	  
     stage('Build and Test') {
       parallel {
@@ -57,6 +22,7 @@ pipeline {
 				}
           }
         }
+	      
         stage('UnitTest') {
           steps {
             script {
