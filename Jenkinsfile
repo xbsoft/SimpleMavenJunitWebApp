@@ -55,7 +55,7 @@ pipeline {
 					if(isUnix() == true) {
                      sh 'ls -l'
          	}else {
-                     bat 'dir -l'
+                     bat 'dir'
          }
 				}
           }
